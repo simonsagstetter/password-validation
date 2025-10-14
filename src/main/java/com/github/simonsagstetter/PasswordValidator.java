@@ -1,5 +1,7 @@
 package com.github.simonsagstetter;
 
+import java.util.Locale;
+
 public final class PasswordValidator {
 
     private static final int minLengthDefault = 8;
@@ -33,8 +35,9 @@ public final class PasswordValidator {
 
     public static boolean isCommonPassword(String password){
         if(password == null)return false;
+        String normalizedString = password.trim().toLowerCase(Locale.ROOT);
         for(String commonPassword : commonPasswords){
-            if(commonPassword.equals(password.trim().toLowerCase()))return true;
+            if(commonPassword.equals(normalizedString))return true;
         }
         return false;
     }
