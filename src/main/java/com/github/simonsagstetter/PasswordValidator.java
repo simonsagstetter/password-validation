@@ -10,8 +10,9 @@ public final class PasswordValidator {
     }
 
     public static boolean containsDigit(String password){
+        if(password == null)return false;
         for(char c : password.toCharArray()){
-            if(c >= '0' && c <= '9')return true;
+            if(Character.isDigit(c))return true;
         }
         return false;
     }

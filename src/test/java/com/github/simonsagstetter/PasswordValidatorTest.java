@@ -129,6 +129,27 @@ class PasswordValidatorTest {
             assertFalse(containsDigit);
         }
 
+        @Test
+        @DisplayName("should return false when called with an empty string")
+        void containsDigit_ShouldReturnFalse_WhenCalledWithEmptyString(){
+            String password = "          ";
+
+            boolean containsDigit = PasswordValidator.containsDigit(password);
+
+            assertFalse(containsDigit);
+        }
+
+
+        @Test
+        @DisplayName("should return false when called with a string that is null")
+        void containsDigit_ShouldReturnFalse_WhenCalledWithNull(){
+            String password = null;
+
+            boolean containsDigit = PasswordValidator.containsDigit(password);
+
+            assertFalse(containsDigit);
+        }
+
     }
 
     @Nested
