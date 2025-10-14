@@ -1,4 +1,6 @@
 # Passwort Validation
+[![Java CI with Maven](https://github.com/simonsagstetter/password-validation/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/simonsagstetter/password-validation/actions/workflows/ci.yml)
+
 This repository contains a passwort validation feature which enforces a specific password policy.
 
 ## Policy
@@ -30,10 +32,6 @@ boolean hasMinLength = PasswordValidator.hasMinLength(password);
 - compile: `mvn clean compile`
 - test: `mvn clean verify`
 - build: `mvn clean package `
-
-## CI Status
-
-coming soon
 
 ## Usage (CLI)
 
