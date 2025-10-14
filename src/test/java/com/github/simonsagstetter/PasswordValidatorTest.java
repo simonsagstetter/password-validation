@@ -129,6 +129,27 @@ class PasswordValidatorTest {
             assertFalse(containsDigit);
         }
 
+        @Test
+        @DisplayName("should return false when called with an empty string")
+        void containsDigit_ShouldReturnFalse_WhenCalledWithEmptyString(){
+            String password = "          ";
+
+            boolean containsDigit = PasswordValidator.containsDigit(password);
+
+            assertFalse(containsDigit);
+        }
+
+
+        @Test
+        @DisplayName("should return false when called with a string that is null")
+        void containsDigit_ShouldReturnFalse_WhenCalledWithNull(){
+            String password = null;
+
+            boolean containsDigit = PasswordValidator.containsDigit(password);
+
+            assertFalse(containsDigit);
+        }
+
     }
 
     @Nested
@@ -215,6 +236,26 @@ class PasswordValidatorTest {
             assertFalse(containsUpperAndLower);
         }
 
+        @Test
+        @DisplayName("should return false when called with an empty string")
+        void containsUpperAndLower_ShouldReturnFalse_WhenCalledWithEmptyString(){
+            String password = "          ";
+
+            boolean containsUpperAndLower = PasswordValidator.containsUpperAndLower(password);
+
+            assertFalse(containsUpperAndLower);
+        }
+
+        @Test
+        @DisplayName("should return false when called with a string that is null")
+        void containsUpperAndLower_ShouldReturnFalse_WhenCalledWithNull(){
+            String password = null;
+
+            boolean containsUpperAndLower = PasswordValidator.containsUpperAndLower(password);
+
+            assertFalse(containsUpperAndLower);
+        }
+
     }
 
     @Nested
@@ -279,6 +320,62 @@ class PasswordValidatorTest {
             boolean isCommonPassword = PasswordValidator.isCommonPassword(password);
 
             assertFalse(isCommonPassword);
+        }
+
+    }
+
+    @Nested
+    @DisplayName("all tests for method containsSpecialChar in PasswordValidator class")
+    class containsSpecialCharTest {
+
+        @Test
+        @DisplayName("should return false when called without a special character")
+        void containsSpecialChar_ShouldReturnFalse_WhenCalledWithoutSpecialChars(){
+            String password = "Password1";
+
+            boolean containsSpecialChar = PasswordValidator.containsSpecialChar(password);
+
+            assertFalse(containsSpecialChar);
+        }
+
+        @Test
+        @DisplayName("should return true when called with a allowed amount of special character")
+        void containsSpecialChar_ShouldReturnTrue_WhenCalledWithAllowedAmountOfSpecialChar(){
+            String password = "Password!$";
+
+            boolean containsSpecialChar = PasswordValidator.containsSpecialChar(password);
+
+            assertTrue(containsSpecialChar);
+        }
+
+        @Test
+        @DisplayName("should return false when called with a not allowed amount of special character")
+        void containsSpecialChar_ShouldReturnFalse_WhenCalledWithNotAllowedAmountOfSpecialChar(){
+            String password = "Password!%&$()";
+
+            boolean containsSpecialChar = PasswordValidator.containsSpecialChar(password);
+
+            assertFalse(containsSpecialChar);
+        }
+
+        @Test
+        @DisplayName("should return false when called with a empty string")
+        void containsSpecialChar_ShouldReturnFalse_WhenCalledWithEmptyString(){
+            String password = "           ";
+
+            boolean containsSpecialChar = PasswordValidator.containsSpecialChar(password);
+
+            assertFalse(containsSpecialChar);
+        }
+
+        @Test
+        @DisplayName("should return false when called with null")
+        void containsSpecialChar_ShouldReturnFalse_WhenCalledWithNull(){
+            String password = null;
+
+            boolean containsSpecialChar = PasswordValidator.containsSpecialChar(password);
+
+            assertFalse(containsSpecialChar);
         }
 
     }

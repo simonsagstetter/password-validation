@@ -47,6 +47,13 @@ string password = "12345678";
 boolean isCommonPassword = PasswordValidator.isCommonPassword(password);
 ```
 
+### `containsSpecialChar()`
+
+```java
+string password = "Pa$$w00rd";
+boolean containsSpecialChar = PasswordValidator.containsSpecialChar(password);
+```
+
 ## Setup
 *Tested with JDK Version 21 - Amazon Corretto*
 
