@@ -10,7 +10,7 @@ class PasswordValidatorTest {
     void hasMinLength_ShouldReturnFalse_WhenCalledWith7Chars(){
         String password = "BadPass";
 
-        boolean hasMinLength = PasswordValidator.hasMinLength(password, 8);
+        boolean hasMinLength = PasswordValidator.hasMinLength(password);
 
         assertFalse(hasMinLength);
     }
@@ -19,7 +19,7 @@ class PasswordValidatorTest {
     void hasMinLength_ShouldReturnTrue_WhenCalledWith8Chars(){
         String password = "Passwords";
 
-        boolean hasMinLength = PasswordValidator.hasMinLength(password, 8);
+        boolean hasMinLength = PasswordValidator.hasMinLength(password);
 
         assertTrue(hasMinLength);
     }
@@ -28,7 +28,7 @@ class PasswordValidatorTest {
     void hasMinLength_ShouldReturnTrue_WhenCalledWith9Chars(){
         String password = "Passwords";
 
-        boolean hasMinLength = PasswordValidator.hasMinLength(password, 8);
+        boolean hasMinLength = PasswordValidator.hasMinLength(password);
 
         assertTrue(hasMinLength);
     }
@@ -37,7 +37,7 @@ class PasswordValidatorTest {
     void hasMinLength_ShouldReturnFalse_WhenCalledWithEmptyString(){
         String password = "          ";
 
-        boolean hasMinLength = PasswordValidator.hasMinLength(password, 8);
+        boolean hasMinLength = PasswordValidator.hasMinLength(password);
 
         assertFalse(hasMinLength);
     }
@@ -46,7 +46,7 @@ class PasswordValidatorTest {
     void hasMinLength_ShouldReturnFalse_WhenCalledWithWhiteSpaces(){
         String password = "    test      ";
 
-        boolean hasMinLength = PasswordValidator.hasMinLength(password, 8);
+        boolean hasMinLength = PasswordValidator.hasMinLength(password);
 
         assertFalse(hasMinLength);
     }
@@ -55,7 +55,7 @@ class PasswordValidatorTest {
     void hasMinLength_ShouldReturnFalse_WhenCalledWithNull(){
         String password = null;
 
-        boolean hasMinLength = PasswordValidator.hasMinLength(password, 8);
+        boolean hasMinLength = PasswordValidator.hasMinLength(password);
 
         assertFalse(hasMinLength);
     }

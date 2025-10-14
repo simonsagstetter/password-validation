@@ -2,8 +2,10 @@ package com.github.simonsagstetter;
 
 public final class PasswordValidator {
 
-    public static boolean hasMinLength(String password, int min){
-        return password != null && password.trim().length() >= min;
+    private static final int minLengthDefault = 8;
+
+    public static boolean hasMinLength(String password){
+        return password != null && password.trim().length() >= minLengthDefault;
     }
 
 }
