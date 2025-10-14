@@ -15,6 +15,15 @@ This repository contains a passwort validation feature which enforces a specific
 - at least 1 special character
 - password meets the minimum x out of n different character groups
 
+## Methods
+
+### `hasMinLength()`
+
+```java
+string password = "password";
+boolean hasMinLength = PasswordValidator.hasMinLength(password);
+```
+
 ## Setup
 *Tested with JDK Version 21 - Amazon Corretto*
 
