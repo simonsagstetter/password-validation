@@ -3,6 +3,7 @@ package com.github.simonsagstetter;
 public final class PasswordValidator {
 
     private static final int minLengthDefault = 8;
+    private static final String[] commonPasswords = { "12345678", "password", "qwertzui", "asdfghjk", "abcdefgh", "00000000"};
 
     public static boolean hasMinLength(String password){
         return password != null && password.trim().length() >= minLengthDefault;
@@ -28,4 +29,11 @@ public final class PasswordValidator {
         return false;
     }
 
+    public static boolean isCommonPassword(String password){
+        if(password == null)return false;
+        for(String commonPassword : commonPasswords){
+            if(commonPassword.equals(password.trim().toLowerCase()))return true;
+        }
+        return false;
+    }
 }

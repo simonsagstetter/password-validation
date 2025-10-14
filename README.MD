@@ -40,6 +40,13 @@ string password = "PasswÖrD";
 boolean containsUpperAndLower = PasswordValidator.containsUpperAndLower(password);
 ```
 
+### `isCommonPassword()`
+
+```java
+string password = "12345678";
+boolean isCommonPassword = PasswordValidator.isCommonPassword(password);
+```
+
 ## Setup
 *Tested with JDK Version 21 - Amazon Corretto*
 
