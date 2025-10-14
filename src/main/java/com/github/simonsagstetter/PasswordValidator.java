@@ -1,11 +1,13 @@
 package com.github.simonsagstetter;
 
+import java.util.Set;
 import java.util.Locale;
 
 public final class PasswordValidator {
 
     private static final int minLengthDefault = 8;
     private static final String[] commonPasswords = { "12345678", "password", "qwertzui", "asdfghjk", "abcdefgh", "00000000"};
+    private static final int allowedSpecialChar = 5;
 
     public static boolean hasMinLength(String password){
         return password != null && password.trim().length() >= minLengthDefault;
@@ -40,5 +42,19 @@ public final class PasswordValidator {
             if(commonPassword.equals(normalizedString))return true;
         }
         return false;
+    }
+
+    public static boolean containsSpecialChar(String password){
+        if(password == null)return false;
+        int counter = 0;
+
+        for(char c : password.toCharArray()){
+            if(!Character.isLetterOrDigit(c)) {
+                counter++;
+            }
+            if(counter > allowedSpecialChar)return false;
+        }
+
+        return counter > 0;
     }
 }
