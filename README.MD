@@ -26,6 +26,13 @@ string password = "password";
 boolean hasMinLength = PasswordValidator.hasMinLength(password);
 ```
 
+### `containsDigit()`
+
+```java
+string password = "passw0rd";
+boolean containsDigit = PasswordValidator.containsDigit(password);
+```
+
 ## Setup
 *Tested with JDK Version 21 - Amazon Corretto*
 

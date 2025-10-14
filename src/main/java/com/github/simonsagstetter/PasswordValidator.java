@@ -8,4 +8,11 @@ public final class PasswordValidator {
         return password != null && password.trim().length() >= minLengthDefault;
     }
 
+    public static boolean containsDigit(String password){
+        for(char c : password.toCharArray()){
+            if(c >= '0' && c <= '9')return true;
+        }
+        return false;
+    }
+
 }

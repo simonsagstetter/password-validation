@@ -75,5 +75,59 @@ class PasswordValidatorTest {
 
     }
 
+    @Nested
+    @DisplayName("all tests for method containsDigit in PasswordValidator class")
+    class containsDigitTest {
 
+        @Test
+        @DisplayName("should return false when called with a string that does not contain a digit")
+        void containsDigit_ShouldReturnFalse_WhenCalledWithNoDigit(){
+            String password = "password";
+
+            boolean containsDigit = PasswordValidator.containsDigit(password);
+
+            assertFalse(containsDigit);
+        }
+
+        @Test
+        @DisplayName("should return true when called with a string that does contain one digit")
+        void containsDigit_ShouldReturnTrue_WhenCalledWith1Digit(){
+            String password = "passw0rd";
+
+            boolean containsDigit = PasswordValidator.containsDigit(password);
+
+            assertTrue(containsDigit);
+        }
+
+        @Test
+        @DisplayName("should return true when called with a string that does only contain digits")
+        void containsDigit_ShouldReturnTrue_WhenCalledWithOnlyDigits(){
+            String password = "123456";
+
+            boolean containsDigit = PasswordValidator.containsDigit(password);
+
+            assertTrue(containsDigit);
+        }
+
+        @Test
+        @DisplayName("should return true when called with a string that does contain several digits")
+        void containsDigit_ShouldReturnTrue_WhenCalledWithSeveralDigits(){
+            String password = "pa55w0rd1";
+
+            boolean containsDigit = PasswordValidator.containsDigit(password);
+
+            assertTrue(containsDigit);
+        }
+
+        @Test
+        @DisplayName("should return false when called with a string that does contain a unicode")
+        void containsDigit_ShouldReturnFalse_WhenCalledWithUnicode(){
+            String password = "Simon😀";
+
+            boolean containsDigit = PasswordValidator.containsDigit(password);
+
+            assertFalse(containsDigit);
+        }
+
+    }
 }
