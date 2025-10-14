@@ -185,5 +185,35 @@ class PasswordValidatorTest {
             assertTrue(containsUpperAndLower);
         }
 
+        @Test
+        @DisplayName("should return true when called with a mixed case and special character string")
+        void containsUpperAndLower_ShouldReturnTrue_WhenCalledWithMixedAndSpecial(){
+            String password = "Passwörd";
+
+            boolean containsUpperAndLower = PasswordValidator.containsUpperAndLower(password);
+
+            assertTrue(containsUpperAndLower);
+        }
+
+        @Test
+        @DisplayName("should return false when called with a lower only and special character string")
+        void containsUpperAndLower_ShouldReturnFalse_WhenCalledWithOnlyLowerSpecial(){
+            String password = "passwörd";
+
+            boolean containsUpperAndLower = PasswordValidator.containsUpperAndLower(password);
+
+            assertFalse(containsUpperAndLower);
+        }
+
+        @Test
+        @DisplayName("should return false when called with a upper only and special character string")
+        void containsUpperAndLower_ShouldReturnFalse_WhenCalledWithOnlyUpperSpecial(){
+            String password = "PASSWÖRD";
+
+            boolean containsUpperAndLower = PasswordValidator.containsUpperAndLower(password);
+
+            assertFalse(containsUpperAndLower);
+        }
+
     }
 }
