@@ -216,4 +216,70 @@ class PasswordValidatorTest {
         }
 
     }
+
+    @Nested
+    @DisplayName("all tests for method containsUpperAndLower in PasswordValidator class")
+    class isCommonPasswordTest {
+
+        @Test
+        @DisplayName("should return false when called with as string that is not in commonPasswords list")
+        void isCommonPassword_ShouldReturnFalse_WhenCalledWithUncommonString(){
+            String password = "Unc0MM3nSecr3T";
+
+            boolean isCommonPassword = PasswordValidator.isCommonPassword(password);
+
+            assertFalse(isCommonPassword);
+        }
+
+        @Test
+        @DisplayName("should return true when called with as string that is in commonPasswords list")
+        void isCommonPassword_ShouldReturnTrue_WhenCalledWithCommonString(){
+            String password = "12345678";
+
+            boolean isCommonPassword = PasswordValidator.isCommonPassword(password);
+
+            assertTrue(isCommonPassword);
+        }
+
+        @Test
+        @DisplayName("should return true when called with as string that is in commonPasswords list with whitespaces")
+        void isCommonPassword_ShouldReturnTrue_WhenCalledWithCommonStringWithWhiteSpaces(){
+            String password = "    12345678    ";
+
+            boolean isCommonPassword = PasswordValidator.isCommonPassword(password);
+
+            assertTrue(isCommonPassword);
+        }
+
+        @Test
+        @DisplayName("should return true when called with as string that is in commonPasswords list with mixed case")
+        void isCommonPassword_ShouldReturnTrue_WhenCalledWithCommonStringMixedCase(){
+            String password = "PaSswoRd";
+
+            boolean isCommonPassword = PasswordValidator.isCommonPassword(password);
+
+            assertTrue(isCommonPassword);
+        }
+
+        @Test
+        @DisplayName("should return false when called with a empty string")
+        void isCommonPassword_ShouldReturnTrue_WhenCalledWithEmptyString(){
+            String password = "    ";
+
+            boolean isCommonPassword = PasswordValidator.isCommonPassword(password);
+
+            assertFalse(isCommonPassword);
+        }
+
+        @Test
+        @DisplayName("should return false when called with null")
+        void isCommonPassword_ShouldReturnTrue_WhenCalledWithNull(){
+            String password = null;
+
+            boolean isCommonPassword = PasswordValidator.isCommonPassword(password);
+
+            assertFalse(isCommonPassword);
+        }
+
+    }
 }
