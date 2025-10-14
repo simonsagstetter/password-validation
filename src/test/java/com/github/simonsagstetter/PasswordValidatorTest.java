@@ -119,5 +119,15 @@ class PasswordValidatorTest {
             assertTrue(containsDigit);
         }
 
+        @Test
+        @DisplayName("should return false when called with a string that does contain a unicode")
+        void containsDigit_ShouldReturnFalse_WhenCalledWithUnicode(){
+            String password = "Simon😀";
+
+            boolean containsDigit = PasswordValidator.containsDigit(password);
+
+            assertFalse(containsDigit);
+        }
+
     }
 }
