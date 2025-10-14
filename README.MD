@@ -33,6 +33,13 @@ string password = "passw0rd";
 boolean containsDigit = PasswordValidator.containsDigit(password);
 ```
 
+### `containsUpperAndLower()`
+
+```java
+string password = "PasswÖrD";
+boolean containsUpperAndLower = PasswordValidator.containsUpperAndLower(password);
+```
+
 ## Setup
 *Tested with JDK Version 21 - Amazon Corretto*
 

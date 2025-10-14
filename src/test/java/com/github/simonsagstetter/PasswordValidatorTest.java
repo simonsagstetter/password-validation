@@ -130,4 +130,90 @@ class PasswordValidatorTest {
         }
 
     }
+
+    @Nested
+    @DisplayName("all tests for method containsUpperAndLower in PasswordValidator class")
+    class containsUpperAndLowerTest {
+
+        @Test
+        @DisplayName("should return false when called with a lowercase only string")
+        void containsUpperAndLower_ShouldReturnFalse_WhenCalledWithOnlyLowercase(){
+            String password = "password";
+
+            boolean containsUpperAndLower = PasswordValidator.containsUpperAndLower(password);
+
+            assertFalse(containsUpperAndLower);
+        }
+
+        @Test
+        @DisplayName("should return false when called with a uppercase only string")
+        void containsUpperAndLower_ShouldReturnFalse_WhenCalledWithOnlyUppercase(){
+            String password = "PASSWORD";
+
+            boolean containsUpperAndLower = PasswordValidator.containsUpperAndLower(password);
+
+            assertFalse(containsUpperAndLower);
+        }
+
+        @Test
+        @DisplayName("should return true when called with a one uppercase string")
+        void containsUpperAndLower_ShouldReturnTrue_WhenCalledWithOneUppercase(){
+            String password = "Password";
+
+            boolean containsUpperAndLower = PasswordValidator.containsUpperAndLower(password);
+
+            assertTrue(containsUpperAndLower);
+        }
+
+        @Test
+        @DisplayName("should return true when called with a one lowercase string")
+        void containsUpperAndLower_ShouldReturnTrue_WhenCalledWithOneLowercase(){
+            String password = "PAsSWORD";
+
+            boolean containsUpperAndLower = PasswordValidator.containsUpperAndLower(password);
+
+            assertTrue(containsUpperAndLower);
+        }
+
+        @Test
+        @DisplayName("should return true when called with a mixed case string")
+        void containsUpperAndLower_ShouldReturnTrue_WhenCalledWithMixedCase(){
+            String password = "PassWorD";
+
+            boolean containsUpperAndLower = PasswordValidator.containsUpperAndLower(password);
+
+            assertTrue(containsUpperAndLower);
+        }
+
+        @Test
+        @DisplayName("should return true when called with a mixed case and special character string")
+        void containsUpperAndLower_ShouldReturnTrue_WhenCalledWithMixedAndSpecial(){
+            String password = "Passwörd";
+
+            boolean containsUpperAndLower = PasswordValidator.containsUpperAndLower(password);
+
+            assertTrue(containsUpperAndLower);
+        }
+
+        @Test
+        @DisplayName("should return false when called with a lower only and special character string")
+        void containsUpperAndLower_ShouldReturnFalse_WhenCalledWithOnlyLowerSpecial(){
+            String password = "passwörd";
+
+            boolean containsUpperAndLower = PasswordValidator.containsUpperAndLower(password);
+
+            assertFalse(containsUpperAndLower);
+        }
+
+        @Test
+        @DisplayName("should return false when called with a upper only and special character string")
+        void containsUpperAndLower_ShouldReturnFalse_WhenCalledWithOnlyUpperSpecial(){
+            String password = "PASSWÖRD";
+
+            boolean containsUpperAndLower = PasswordValidator.containsUpperAndLower(password);
+
+            assertFalse(containsUpperAndLower);
+        }
+
+    }
 }
