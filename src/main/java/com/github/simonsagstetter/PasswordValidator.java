@@ -16,6 +16,7 @@ public final class PasswordValidator {
     }
 
     public static boolean containsUpperAndLower(String password){
+        if(password == null)return false;
         boolean hasLowerCase = false;
         boolean hasUpperCase = false;
 

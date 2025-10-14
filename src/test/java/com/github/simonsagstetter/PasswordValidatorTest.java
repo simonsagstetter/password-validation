@@ -215,5 +215,25 @@ class PasswordValidatorTest {
             assertFalse(containsUpperAndLower);
         }
 
+        @Test
+        @DisplayName("should return false when called with an empty string")
+        void containsUpperAndLower_ShouldReturnFalse_WhenCalledWithEmptyString(){
+            String password = "          ";
+
+            boolean containsUpperAndLower = PasswordValidator.containsUpperAndLower(password);
+
+            assertFalse(containsUpperAndLower);
+        }
+
+        @Test
+        @DisplayName("should return false when called with a string that is null")
+        void containsUpperAndLower_ShouldReturnFalse_WhenCalledWithNull(){
+            String password = null;
+
+            boolean containsUpperAndLower = PasswordValidator.containsUpperAndLower(password);
+
+            assertFalse(containsUpperAndLower);
+        }
+
     }
 }
