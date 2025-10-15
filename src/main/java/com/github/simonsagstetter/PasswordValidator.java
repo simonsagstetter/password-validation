@@ -50,4 +50,12 @@ public final class PasswordValidator {
 
         return false;
     }
+
+    public static boolean isValid(String password){
+        boolean hasMinLength = hasMinLength(password);
+        boolean containsDigit = containsDigit(password);
+        boolean containsUpperAndLower = containsUpperAndLower(password);
+        boolean isNotCommonPassword = !isCommonPassword(password);
+        return hasMinLength && containsDigit && containsUpperAndLower && isNotCommonPassword;
+    }
 }
