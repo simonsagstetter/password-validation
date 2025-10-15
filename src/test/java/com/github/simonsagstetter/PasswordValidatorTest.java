@@ -379,4 +379,161 @@ class PasswordValidatorTest {
         }
 
     }
+
+    @Nested
+    @DisplayName("all tests for method isValid in PasswordValidator class")
+    class isValidTest {
+
+        @Test
+        @DisplayName("should return true when called with a string the meets the policy")
+        void containsSpecialChar_ShouldReturnTrue_WhenCalledWithPolicy(){
+            String password = "Passw0rd!";
+
+            boolean isValid = PasswordValidator.isValid(password);
+
+            assertTrue(isValid);
+        }
+
+        @Test
+        @DisplayName("should return true when called with a a very long string the meets the policy")
+        void containsSpecialChar_ShouldReturnTrue_WhenCalledWithVeryLongPassword(){
+            String password = "12345678PasswordIsVeryL0ng987654321$%";
+
+            boolean isValid = PasswordValidator.isValid(password);
+
+            assertTrue(isValid);
+        }
+
+        @Test
+        @DisplayName("should return false when called with a string that does not have minimum length")
+        void containsSpecialChar_ShouldReturnFalse_WhenCalledWithoutMinLength(){
+            String password = "Pass1";
+
+            boolean isValid = PasswordValidator.isValid(password);
+
+            assertFalse(isValid);
+        }
+
+        @Test
+        @DisplayName("should return false when called with a string that does not have a digit")
+        void containsSpecialChar_ShouldReturnFalse_WhenCalledWithoutDigit(){
+            String password = "Password";
+
+            boolean isValid = PasswordValidator.isValid(password);
+
+            assertFalse(isValid);
+        }
+
+        @Test
+        @DisplayName("should return false when called with a string that does not have a upper and lower case")
+        void containsSpecialChar_ShouldReturnFalse_WhenCalledWithoutUpperAndLowerCase(){
+            String password = "passw0rd";
+
+            boolean isValid = PasswordValidator.isValid(password);
+
+            assertFalse(isValid);
+        }
+
+        @Test
+        @DisplayName("should return false when called with a common password")
+        void containsSpecialChar_ShouldReturnFalse_WhenCalledWithCommonPassword(){
+            String password = "12345678";
+
+            boolean isValid = PasswordValidator.isValid(password);
+
+            assertFalse(isValid);
+        }
+
+        @Test
+        @DisplayName("should return false when called with a case mismatching common password")
+        void containsSpecialChar_ShouldReturnFalse_WhenCalledWithCaseMismatchingCommonPassword(){
+            String password = "PASSWORD";
+
+            boolean isValid = PasswordValidator.isValid(password);
+
+            assertFalse(isValid);
+        }
+
+        @Test
+        @DisplayName("should return false when called without min length, digit and upper lower case")
+        void containsSpecialChar_ShouldReturnFalse_WhenCalledWithZeroRequirement(){
+            String password = "pass";
+
+            boolean isValid = PasswordValidator.isValid(password);
+
+            assertFalse(isValid);
+        }
+
+        @Test
+        @DisplayName("should return false when called with only digits and lowercase")
+        void containsSpecialChar_ShouldReturnFalse_WhenCalledWithDigitsAndLowercase(){
+            String password = "123456password";
+
+            boolean isValid = PasswordValidator.isValid(password);
+
+            assertFalse(isValid);
+        }
+
+        @Test
+        @DisplayName("should return false when called with only digits and uppercase")
+        void containsSpecialChar_ShouldReturnFalse_WhenCalledWithDigitsAndUppercase(){
+            String password = "123456PASSWORD";
+
+            boolean isValid = PasswordValidator.isValid(password);
+
+            assertFalse(isValid);
+        }
+
+        @Test
+        @DisplayName("should return false when called whit short string and leading and ending white spaces")
+        void containsSpecialChar_ShouldReturnFalse_WhenCalledWithWhiteSpaces(){
+            String password = "    pass     ";
+
+            boolean isValid = PasswordValidator.isValid(password);
+
+            assertFalse(isValid);
+        }
+
+        @Test
+        @DisplayName("should return false when called with a not allowed special char")
+        void containsSpecialChar_ShouldReturnFalse_WhenCalledWithNotAllowedSpecialChar(){
+            String password = "Password'";
+
+            boolean isValid = PasswordValidator.isValid(password);
+
+            assertFalse(isValid);
+        }
+
+        @Test
+        @DisplayName("should return false when called with allowed special char but does not meet policy")
+        void containsSpecialChar_ShouldReturnFalse_WhenCalledWithAllowedSpecialCharMismatchingPolicy(){
+            String password = "password!%";
+
+            boolean isValid = PasswordValidator.isValid(password);
+
+            assertFalse(isValid);
+        }
+
+
+        @Test
+        @DisplayName("should return false when called with a empty string")
+        void containsSpecialChar_ShouldReturnFalse_WhenCalledWithEmptyString(){
+            String password = "           ";
+
+            boolean isValid = PasswordValidator.isValid(password);
+
+            assertFalse(isValid);
+        }
+
+        @Test
+        @DisplayName("should return false when called with null")
+        void containsSpecialChar_ShouldReturnFalse_WhenCalledWithNull(){
+            String password = null;
+
+            boolean isValid = PasswordValidator.isValid(password);
+
+            assertFalse(isValid);
+        }
+
+    }
 }

@@ -2,7 +2,6 @@ package com.github.simonsagstetter;
 
 import java.util.Set;
 import java.util.Locale;
-import java.util.Set;
 
 public final class PasswordValidator {
 
@@ -49,5 +48,17 @@ public final class PasswordValidator {
         }
 
         return false;
+    }
+
+    public static boolean isValid(String password){
+        if(isCommonPassword(password))return false;
+
+        int fulfilledPolicyCount = 0;
+
+        if(hasMinLength(password))++fulfilledPolicyCount;
+        if(containsDigit(password))++fulfilledPolicyCount;
+        if(containsUpperAndLower(password) && ++fulfilledPolicyCount >=3)return true;
+
+        return containsSpecialChar(password) && ++fulfilledPolicyCount >= 3;
     }
 }
