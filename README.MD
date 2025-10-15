@@ -1,8 +1,7 @@
-# Passwort Validation
+# Password Validation
 [![Java CI with Maven](https://github.com/simonsagstetter/password-validation/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/simonsagstetter/password-validation/actions/workflows/ci.yml)
 
-This repository contains a passwort validation feature which enforces a specific password policy.
-
+A Java library for password security, featuring a validator that checks whether a string complies with a strict password policy, and a PasswordGenerator that automatically creates secure, policy-compliant passwords.
 ## Policy
 
 ### Required Policy
@@ -15,7 +14,7 @@ This repository contains a passwort validation feature which enforces a specific
 ### Bonus Policy
 
 - at least 1 special character
-- password meets the minimum x out of n different character groups
+- password complies to a minimum of 2 out of 3 policies
 
 ## PasswordValidator Methods
 
@@ -111,7 +110,7 @@ This project includes the following bonus packages:
 
 - Bonus Policy
   - at least 1 special character from allowed scope `!@#$%^&*()-_+=?.,;:`
-  - password meets the minimum 2 out 3 n different character groups when it is not a common password and it has the required minimum length
+  - password complies to a minimum of 2 out of 3 policies as long as it is not a common password or is less than 8 characters
 - PasswordGenerator
   - generates a secure and strong password that already fulfills the requirements set by basic + bonus password policy
 - ParameterizedTest
