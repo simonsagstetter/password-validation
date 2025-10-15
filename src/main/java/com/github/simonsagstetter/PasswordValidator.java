@@ -8,7 +8,7 @@ public final class PasswordValidator {
 
     private static final int minLengthDefault = 8;
     private static final Set<String> commonPasswords = Set.of("12345678", "password", "qwertzui", "asdfghjk", "abcdefgh", "00000000");
-    private static final int allowedSpecialChar = 5;
+    private static final String allowedSpecialChars = "!@#$%^&*()-_+=?.,;:";
 
     public static boolean hasMinLength(String password){
         return password != null && password.trim().length() >= minLengthDefault;
@@ -43,15 +43,11 @@ public final class PasswordValidator {
 
     public static boolean containsSpecialChar(String password){
         if(password == null)return false;
-        int counter = 0;
 
         for(char c : password.toCharArray()){
-            if(!Character.isLetterOrDigit(c)) {
-                counter++;
-            }
-            if(counter > allowedSpecialChar)return false;
+            if(!Character.isLetterOrDigit(c) && allowedSpecialChars.contains(String.valueOf(c))) return true;
         }
 
-        return counter > 0;
+        return false;
     }
 }

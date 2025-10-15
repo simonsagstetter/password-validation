@@ -339,8 +339,8 @@ class PasswordValidatorTest {
         }
 
         @Test
-        @DisplayName("should return true when called with a allowed amount of special character")
-        void containsSpecialChar_ShouldReturnTrue_WhenCalledWithAllowedAmountOfSpecialChar(){
+        @DisplayName("should return true when called with a allowed special character")
+        void containsSpecialChar_ShouldReturnTrue_WhenCalledWithAllowedSpecialChar(){
             String password = "Password!$";
 
             boolean containsSpecialChar = PasswordValidator.containsSpecialChar(password);
@@ -349,9 +349,9 @@ class PasswordValidatorTest {
         }
 
         @Test
-        @DisplayName("should return false when called with a not allowed amount of special character")
-        void containsSpecialChar_ShouldReturnFalse_WhenCalledWithNotAllowedAmountOfSpecialChar(){
-            String password = "Password!%&$()";
+        @DisplayName("should return false when called with a not allowed  special character")
+        void containsSpecialChar_ShouldReturnFalse_WhenCalledWithNotAllowedSpecialChar(){
+            String password = "Password'";
 
             boolean containsSpecialChar = PasswordValidator.containsSpecialChar(password);
 
