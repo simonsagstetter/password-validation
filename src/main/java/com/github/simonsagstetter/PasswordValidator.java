@@ -2,7 +2,6 @@ package com.github.simonsagstetter;
 
 import java.util.Set;
 import java.util.Locale;
-import java.util.Set;
 
 public final class PasswordValidator {
 

@@ -54,6 +54,13 @@ string password = "Pa$$w00rd";
 boolean containsSpecialChar = PasswordValidator.containsSpecialChar(password);
 ```
 
+### `isValid()`
+
+```java
+string password = "Passw0rd";
+boolean isValid = PasswordValidator.isValid(password);
+```
+
 ## Setup
 *Tested with JDK Version 21 - Amazon Corretto*
 
