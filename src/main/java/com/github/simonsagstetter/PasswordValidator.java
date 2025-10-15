@@ -5,9 +5,9 @@ import java.util.Locale;
 
 public final class PasswordValidator {
 
-    private static final int minLengthDefault = 8;
-    private static final Set<String> commonPasswords = Set.of("12345678", "password", "qwertzui", "asdfghjk", "abcdefgh", "00000000");
-    private static final String allowedSpecialChars = "!@#$%^&*()-_+=?.,;:";
+    public static final int minLengthDefault = 8;
+    public static final Set<String> commonPasswords = Set.of("12345678", "password", "qwertzui", "asdfghjk", "abcdefgh", "00000000");
+    public static final String allowedSpecialChars = "!@#$%^&*()-_+=?.,;:";
 
     public static boolean hasMinLength(String password){
         return password != null && password.trim().length() >= minLengthDefault;
