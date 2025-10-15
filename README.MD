@@ -17,7 +17,7 @@ This repository contains a passwort validation feature which enforces a specific
 - at least 1 special character
 - password meets the minimum x out of n different character groups
 
-## Methods
+## PasswordValidator Methods
 
 ### `hasMinLength()`
 
@@ -59,6 +59,15 @@ boolean containsSpecialChar = PasswordValidator.containsSpecialChar(password);
 ```java
 string password = "Passw0rd";
 boolean isValid = PasswordValidator.isValid(password);
+```
+
+## PasswordGenerator Methods (Bonus)
+
+### `generateSecurePassword()`
+
+```java
+// Generates a 15 character strong password that automatically applies to the password policy
+string password = PasswordGenerator.generateSecurePassword();
 ```
 
 ## Setup
