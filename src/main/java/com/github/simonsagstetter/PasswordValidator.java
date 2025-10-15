@@ -52,13 +52,13 @@ public final class PasswordValidator {
 
     public static boolean isValid(String password){
         if(isCommonPassword(password))return false;
+        if(!hasMinLength(password))return false;
 
         int fulfilledPolicyCount = 0;
 
-        if(hasMinLength(password))++fulfilledPolicyCount;
         if(containsDigit(password))++fulfilledPolicyCount;
-        if(containsUpperAndLower(password) && ++fulfilledPolicyCount >=3)return true;
+        if(containsUpperAndLower(password) && ++fulfilledPolicyCount >=2)return true;
 
-        return containsSpecialChar(password) && ++fulfilledPolicyCount >= 3;
+        return containsSpecialChar(password) && ++fulfilledPolicyCount >= 2;
     }
 }
