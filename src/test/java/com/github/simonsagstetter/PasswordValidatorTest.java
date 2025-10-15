@@ -3,6 +3,8 @@ package com.github.simonsagstetter;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -535,5 +537,19 @@ class PasswordValidatorTest {
             assertFalse(isValid);
         }
 
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(files = "src/test/resources/invalid.csv", useHeadersInDisplayName = true, delimiter = ',', quoteCharacter = '"')
+    @DisplayName("testing invalid passwords from csv source")
+    void isValid_ShouldReturnFalse_WhenCalledWithInvalidPasswordList(String password){
+        assertFalse(PasswordValidator.isValid(password));
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(files = "src/test/resources/valid.csv", useHeadersInDisplayName = true, delimiter = ',', quoteCharacter = '"')
+    @DisplayName("testing valid passwords from csv source")
+    void isValid_ShouldReturnTrue_WhenCalledWithValidPasswordList(String password){
+        assertTrue(PasswordValidator.isValid(password));
     }
 }
