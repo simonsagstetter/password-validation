@@ -52,10 +52,9 @@ public final class PasswordValidator {
     }
 
     public static boolean isValid(String password){
-        boolean hasMinLength = hasMinLength(password);
-        boolean containsDigit = containsDigit(password);
-        boolean containsUpperAndLower = containsUpperAndLower(password);
-        boolean isNotCommonPassword = !isCommonPassword(password);
-        return hasMinLength && containsDigit && containsUpperAndLower && isNotCommonPassword;
+        if(!hasMinLength(password))return false;
+        if(!containsDigit(password))return false;
+        if(!containsUpperAndLower(password))return false;
+        return !isCommonPassword(password);
     }
 }
