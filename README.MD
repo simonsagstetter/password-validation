@@ -68,6 +68,11 @@ boolean isValid = PasswordValidator.isValid(password);
 - test: `mvn clean verify`
 - build: `mvn clean package `
 
+#### Manual Compilation
+
+ - compile: `javac src/main/java/com/github/simonsagstetter/** -d out`
+ - execute: `java -cp out com.github.simonsagstetter.Main`
+
 ## Usage (CLI)
 
 coming soon
