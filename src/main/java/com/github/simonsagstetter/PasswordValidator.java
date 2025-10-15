@@ -54,6 +54,7 @@ public final class PasswordValidator {
         if(!hasMinLength(password))return false;
         if(!containsDigit(password))return false;
         if(!containsUpperAndLower(password))return false;
+        if(!containsSpecialChar(password))return false;
         return !isCommonPassword(password);
     }
 }

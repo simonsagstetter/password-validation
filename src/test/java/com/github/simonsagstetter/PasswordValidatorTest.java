@@ -387,7 +387,7 @@ class PasswordValidatorTest {
         @Test
         @DisplayName("should return true when called with a string the meets the policy")
         void containsSpecialChar_ShouldReturnTrue_WhenCalledWithPolicy(){
-            String password = "Passw0rd";
+            String password = "Passw0rd!";
 
             boolean isValid = PasswordValidator.isValid(password);
 
@@ -397,7 +397,7 @@ class PasswordValidatorTest {
         @Test
         @DisplayName("should return true when called with a a very long string the meets the policy")
         void containsSpecialChar_ShouldReturnTrue_WhenCalledWithVeryLongPassword(){
-            String password = "12345678PasswordIsVeryL0ng987654321";
+            String password = "12345678PasswordIsVeryL0ng987654321$%";
 
             boolean isValid = PasswordValidator.isValid(password);
 
@@ -488,6 +488,26 @@ class PasswordValidatorTest {
         @DisplayName("should return false when called whit short string and leading and ending white spaces")
         void containsSpecialChar_ShouldReturnFalse_WhenCalledWithWhiteSpaces(){
             String password = "    pass     ";
+
+            boolean isValid = PasswordValidator.isValid(password);
+
+            assertFalse(isValid);
+        }
+
+        @Test
+        @DisplayName("should return false when called with a not allowed special char")
+        void containsSpecialChar_ShouldReturnFalse_WhenCalledWithNotAllowedSpecialChar(){
+            String password = "Passw0rd'";
+
+            boolean isValid = PasswordValidator.isValid(password);
+
+            assertFalse(isValid);
+        }
+
+        @Test
+        @DisplayName("should return false when called with allowed special char but does not meet policy")
+        void containsSpecialChar_ShouldReturnFalse_WhenCalledWithAllowedSpecialCharMismatchingPolicy(){
+            String password = "Password!%";
 
             boolean isValid = PasswordValidator.isValid(password);
 
