@@ -82,10 +82,37 @@ string password = PasswordGenerator.generateSecurePassword();
  - compile: `javac src/main/java/com/github/simonsagstetter/** -d out`
  - execute: `java -cp out com.github.simonsagstetter.Main`
 
-## Usage (CLI)
+## Usage
 
-coming soon
+```java
+package com.github.simonsagstetter;
+
+public class Main {
+    public static void main(String[] args) {
+        String password = "SecurePa55word!";
+        boolean isValid = PasswordValidator.isValid(password);
+
+        if(isValid){
+            // do this
+        }else {
+            // do that
+        }
+
+        // or use a generated secure password - no validation necessary
+        String generatedPassword = PasswordGenerator.generateSecurePassword();
+    }
+}
+
+```
 
 ## Additional Information
 
-coming soon
+This project includes the following bonus packages:
+
+- Bonus Policy
+  - at least 1 special character from allowed scope `!@#$%^&*()-_+=?.,;:`
+  - password meets the minimum 2 out 3 n different character groups when it is not a common password and it has the required minimum length
+- PasswordGenerator
+  - generates a secure and strong password that already fulfills the requirements set by basic + bonus password policy
+- ParameterizedTest
+  - values which were added to the invalid.csv or valid.csv inside `src/test/resources` will be included in the PasswordValidatorTest class 
