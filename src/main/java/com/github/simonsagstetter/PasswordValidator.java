@@ -51,10 +51,14 @@ public final class PasswordValidator {
     }
 
     public static boolean isValid(String password){
-        if(!hasMinLength(password))return false;
-        if(!containsDigit(password))return false;
-        if(!containsUpperAndLower(password))return false;
-        if(!containsSpecialChar(password))return false;
-        return !isCommonPassword(password);
+        if(isCommonPassword(password))return false;
+
+        int fulfilledPolicyCount = 0;
+
+        if(hasMinLength(password))++fulfilledPolicyCount;
+        if(containsDigit(password))++fulfilledPolicyCount;
+        if(containsUpperAndLower(password) && ++fulfilledPolicyCount >=3)return true;
+
+        return containsSpecialChar(password) && ++fulfilledPolicyCount >= 3;
     }
 }

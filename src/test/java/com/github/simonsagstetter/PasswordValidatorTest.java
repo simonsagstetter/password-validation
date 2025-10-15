@@ -497,7 +497,7 @@ class PasswordValidatorTest {
         @Test
         @DisplayName("should return false when called with a not allowed special char")
         void containsSpecialChar_ShouldReturnFalse_WhenCalledWithNotAllowedSpecialChar(){
-            String password = "Passw0rd'";
+            String password = "Password'";
 
             boolean isValid = PasswordValidator.isValid(password);
 
@@ -507,7 +507,7 @@ class PasswordValidatorTest {
         @Test
         @DisplayName("should return false when called with allowed special char but does not meet policy")
         void containsSpecialChar_ShouldReturnFalse_WhenCalledWithAllowedSpecialCharMismatchingPolicy(){
-            String password = "Password!%";
+            String password = "password!%";
 
             boolean isValid = PasswordValidator.isValid(password);
 
