@@ -1,7 +1,10 @@
 # Password Validation
 [![Java CI with Maven](https://github.com/simonsagstetter/password-validation/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/simonsagstetter/password-validation/actions/workflows/ci.yml)
+![Version](https://img.shields.io/badge/version-2.0.0-blue)
+> *You are looking at the docs of version **2.0.x** - [Click here to navigate to version **v1.0.x**](https://github.com/simonsagstetter/password-validation/tree/v1.0.X)*
 
-A Java library for password security, featuring a validator that checks whether a string complies with a strict password policy, and a PasswordGenerator that automatically creates secure, policy-compliant passwords.
+A Java library for password security, featuring a validator that checks whether a string complies with a strict password policy, a PasswordGenerator that automatically creates secure, policy-compliant passwords and a CLI tool accessible via the Main.main() method.
+
 ## Policy
 
 ### Required Policy
