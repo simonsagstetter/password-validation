@@ -6,11 +6,12 @@ public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         String userChoice = "";
+        ValidationResult result = new ValidationResult();
         do {
             System.out.print("Please enter your new password: ");
             String password = input.nextLine();
 
-            ValidationResult result = PasswordValidator.isValid(password);
+            result = PasswordValidator.isValid(password);
 
             if (result.getIsValid()) {
                 System.out.println("The entered password is valid!");
@@ -33,8 +34,25 @@ public class Main {
             }
             userChoice = input.nextLine();
             System.out.println();
-        } while (userChoice.equals("y") || userChoice.equals("Y"));
+        } while (isYes(userChoice));
+
+        if(!result.getIsValid()){
+            System.out.print("Would you prefer to generate a password? (y/n) ");
+            userChoice = input.nextLine();
+
+            if(isYes(userChoice)){
+                System.out.println();
+                String password = PasswordGenerator.generateSecurePassword();
+                System.out.println("This is your new password: " + password);
+                System.out.println();
+            }
+        }
 
         System.out.println("OK! Goodbye...");
+    }
+
+    public static boolean isYes(String s){
+        if (s==null) return false;
+        return s.equals("y") || s.equals("Y");
     }
 }
