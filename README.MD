@@ -57,7 +57,7 @@ boolean containsSpecialChar = PasswordValidator.containsSpecialChar(password);
 
 ```java
 string password = "Passw0rd";
-boolean isValid = PasswordValidator.isValid(password);
+ValidationResult result = PasswordValidator.isValid(password);
 ```
 
 ## PasswordGenerator Methods (Bonus)
@@ -86,15 +86,30 @@ string password = PasswordGenerator.generateSecurePassword();
 ```java
 package com.github.simonsagstetter;
 
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
         String password = "SecurePa55word!";
-        boolean isValid = PasswordValidator.isValid(password);
+        
+        ValidationResult result = PasswordValidator.isValid(password);
+        
+        boolean isValid = result.getIsValid();
+        ArrayList<String> reasons = result.getReasons();
 
-        if(isValid){
-            // do this
-        }else {
-            // do that
+        if (result.getIsValid()) {
+            // process
+        } else {
+            for (String reason : result.getReasons()) {
+                System.out.println(reason);
+            }
+        }
+
+        // or check for reasons
+        if (result.hasReason()) {
+            for (String reason : result.getReasons()) {
+                System.out.println(reason);
+            }
         }
 
         // or use a generated secure password - no validation necessary
@@ -115,3 +130,8 @@ This project includes the following bonus packages:
   - generates a secure and strong password that already fulfills the requirements set by basic + bonus password policy
 - ParameterizedTest
   - values which were added to the invalid.csv or valid.csv inside `src/test/resources` will be included in the PasswordValidatorTest class 
+- ValidationResult
+  - PasswordValidator.isValid() returns a ValidationResult class instance that contains the result of the validation
+  - `ValidationResult.getIsValid()` returns a `boolean` 
+  - `ValidationResult.getReasons()` returns a `ArrayList<String>` which contain reasons why the validation failed
+  - Check for reasons by calling `ValidationResult.hasReason()`
