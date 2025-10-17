@@ -83,12 +83,14 @@ string password = PasswordGenerator.generateSecurePassword();
 
 ## Usage
 
+### Package
 ```java
 package com.github.simonsagstetter;
 
 import java.util.ArrayList;
 
 public class Main {
+    
     public static void main(String[] args) {
         String password = "SecurePa55word!";
         
@@ -116,7 +118,68 @@ public class Main {
         String generatedPassword = PasswordGenerator.generateSecurePassword();
     }
 }
+```
+### CLI
+*Comile and execute com.github.simonsagstetter.Main class*
+```shell
+    # enter a password and hit enter
+    Please enter your new password: <yourpassword>
+    
+    # Check for errors
+    The entered password is invalid!
+    Reasons:
+    - <yourpassword> was identified as an unsecure password
+    - <yourpassword> does not meet the required minimum length of 8
+    - <yourpassword> does not contain a digit
+    - <yourpassword> does not contain upper and lower case characters
+    - <yourpassword> does not contain a special char from the allowed set (!@#$%^&*()-_+=?.,;:)d
+    
+    # type in y or Y to try again or hit any key to exit
+    Do you want to try again? (y/n) <your-choice>
+    
+    OK! Goodbye...
+```
 
+#### Example
+
+```shell
+    Please enter your new password: 12345678
+    The entered password is invalid!
+    Reasons:
+    - 12345678 was identified as an unsecure password
+    
+    Do you want to try again? (y/n) y
+    
+    Please enter your new password: 123456789password
+    The entered password is invalid!
+    Reasons:
+    - 123456789password does not contain upper and lower case characters
+    - 123456789password does not contain a special char from the allowed set (!@#$%^&*()-_+=?.,;:)
+    
+    Do you want to try again? (y/n) y
+    
+    Please enter your new password: SafePassword
+    The entered password is invalid!
+    Reasons:
+    - SafePassword does not contain a digit
+    - SafePassword does not contain a special char from the allowed set (!@#$%^&*()-_+=?.,;:)
+    
+    Do you want to try again? (y/n) y
+    
+    Please enter your new password: password!
+    The entered password is invalid!
+    Reasons:
+    - password! does not contain a digit
+    - password! does not contain upper and lower case characters
+    
+    Do you want to try again? (y/n) y
+    
+    Please enter your new password: S3curePassw000rd!
+    The entered password is valid!
+    
+    Do you want to validate a new password? (y/n) n
+    
+    OK! Goodbye...
 ```
 
 ## Additional Information
@@ -135,3 +198,4 @@ This project includes the following bonus packages:
   - `ValidationResult.getIsValid()` returns a `boolean` 
   - `ValidationResult.getReasons()` returns a `ArrayList<String>` which contain reasons why the validation failed
   - Check for reasons by calling `ValidationResult.hasReason()`
+- CLI Tool - check out the [Usage](#CLI) section for more information
