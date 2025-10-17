@@ -1,6 +1,8 @@
 # Password Validation
 [![Java CI with Maven](https://github.com/simonsagstetter/password-validation/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/simonsagstetter/password-validation/actions/workflows/ci.yml)
 ![Version](https://img.shields.io/badge/version-2.0.0-blue)
+![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/simonsagstetter/password-validation?utm_source=oss&utm_medium=github&utm_campaign=simonsagstetter%2Fpassword-validation&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews)
+
 > *You are looking at the docs of version **2.0.x** - [Click here to navigate to version **v1.0.x**](https://github.com/simonsagstetter/password-validation/tree/v1.0.X)*
 
 A Java library for password security, featuring a validator that checks whether a string complies with a strict password policy, a PasswordGenerator that automatically creates secure, policy-compliant passwords and a CLI tool accessible via the Main.main() method.
