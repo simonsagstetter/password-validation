@@ -9,13 +9,13 @@ class MainTest {
 
     @Test
     @DisplayName("isYes_ShouldReturnTrue_WhenCalledWithLowerCaseY: isYes should return true when called with an y")
-    void isYes_ShouldReturnTrue_WhenCalledWithLowerCaseS(){
+    void isYes_ShouldReturnTrue_WhenCalledWithLowerCaseY(){
         assertTrue(Main.isYes("y"));
     }
 
     @Test
     @DisplayName("isYes_ShouldReturnTrue_WhenCalledWithUpperCaseS: isYes should return true when called with an Y")
-    void isYes_ShouldReturnTrue_WhenCalledWithUpperCaseS(){
+    void isYes_ShouldReturnTrue_WhenCalledWithUpperCaseY(){
         assertTrue(Main.isYes("Y"));
     }
 

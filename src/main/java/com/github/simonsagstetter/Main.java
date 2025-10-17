@@ -52,7 +52,7 @@ public class Main {
     }
 
     public static boolean isYes(String s){
-        if(s==null)return false;
+        if (s==null) return false;
         return s.equals("y") || s.equals("Y");
     }
 }
