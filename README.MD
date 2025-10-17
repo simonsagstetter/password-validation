@@ -135,10 +135,17 @@ public class Main {
     - <yourpassword> does not meet the required minimum length of 8
     - <yourpassword> does not contain a digit
     - <yourpassword> does not contain upper and lower case characters
-    - <yourpassword> does not contain a special char from the allowed set (!@#$%^&*()-_+=?.,;:)d
+    - <yourpassword> does not contain a special char from the allowed set (!@#$%^&*()-_+=?.,;:)
     
     # type in y or Y to try again or hit any key to exit
     Do you want to try again? (y/n) <your-choice>
+    
+    # if you had an invalid password and do not want to try 
+    # again the cli will ask you if you want 
+    # to generate a secure password instead
+    Would you prefer to generate a password? (y/n) <your-choice>
+    
+    This is your new password: <generated-password>
     
     OK! Goodbye...
 ```
@@ -150,14 +157,6 @@ public class Main {
     The entered password is invalid!
     Reasons:
     - 12345678 was identified as an unsecure password
-    
-    Do you want to try again? (y/n) y
-    
-    Please enter your new password: 123456789password
-    The entered password is invalid!
-    Reasons:
-    - 123456789password does not contain upper and lower case characters
-    - 123456789password does not contain a special char from the allowed set (!@#$%^&*()-_+=?.,;:)
     
     Do you want to try again? (y/n) y
     
@@ -177,10 +176,21 @@ public class Main {
     
     Do you want to try again? (y/n) y
     
-    Please enter your new password: S3curePassw000rd!
+    Please enter your new password: S3curePassw000rd
     The entered password is valid!
     
-    Do you want to validate a new password? (y/n) n
+    Do you want to validate a new password? (y/n) y
+    
+    Please enter your new password: unsafe
+    The entered password is invalid!
+    Reasons:
+    - unsafe does not meet the required minimum length of 8
+    
+    Do you want to try again? (y/n) n
+    
+    Would you prefer to generate a password? (y/n) y
+    
+    This is your new password: xE16U&Q*Fea9vGZ
     
     OK! Goodbye...
 ```
