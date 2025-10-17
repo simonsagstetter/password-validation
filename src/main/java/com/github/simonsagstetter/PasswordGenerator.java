@@ -16,6 +16,8 @@ public final class PasswordGenerator {
     private static final char[] SPECIAL_CHARS = PasswordValidator.allowedSpecialChars.toCharArray();
     private static final char[] ALL = concat(LOWERCASE, UPPERCASE, DIGITS, SPECIAL_CHARS);
 
+    private PasswordGenerator(){}
+
     public static char[] concat(char[]... arrays){
         int length = 0;
         for(char[] array : arrays){
