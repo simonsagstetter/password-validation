@@ -8,18 +8,19 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PasswordGeneratorTest {
 
-    @DisplayName("should always return valid password when called")
+    @DisplayName("generateSecurePassword_ShouldReturnValidPassword_WhenCalled: should always return valid password when called")
     @RepeatedTest(200)
     void generateSecurePassword_ShouldReturnValidPassword_WhenCalled(){
         String password = PasswordGenerator.generateSecurePassword();
 
-        boolean isValid = PasswordValidator.isValid(password);
+        ValidationResult result = PasswordValidator.isValid(password);
 
-        assertTrue(isValid);
+        assertFalse(result.hasReason());
+        assertTrue(result.getIsValid());
     }
 
     @Test
-    @DisplayName("should return one correct ordered and concatenated char array when called with n char arrays")
+    @DisplayName("concat_ShouldReturnOneCorrectCharArray_WhenCalledWithNCharArrays: should return one correct ordered and concatenated char array when called with n char arrays")
     void concat_ShouldReturnOneCorrectCharArray_WhenCalledWithNCharArrays(){
         char[] a = new char[]{'a', 'B'};
         char[] b = new char[]{'1', '2'};
@@ -33,7 +34,7 @@ class PasswordGeneratorTest {
     }
 
     @Test
-    @DisplayName("should return a different order when called with char array")
+    @DisplayName("shuffle_ShouldReturnDifferentOrder_WhenCalledWithCharArray: should return a different order when called with char array")
     void shuffle_ShouldReturnDifferentOrder_WhenCalledWithCharArray(){
         char[] array = new char[]{'a', 'B', '1', '2', '%', '&'};
 

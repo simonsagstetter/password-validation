@@ -1,7 +1,10 @@
 # Password Validation
 [![Java CI with Maven](https://github.com/simonsagstetter/password-validation/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/simonsagstetter/password-validation/actions/workflows/ci.yml)
+![Version](https://img.shields.io/badge/version-2.0.0-blue)
+> *You are looking at the docs of version **2.0.x** - [Click here to navigate to version **v1.0.x**](https://github.com/simonsagstetter/password-validation/tree/v1.0.X)*
 
-A Java library for password security, featuring a validator that checks whether a string complies with a strict password policy, and a PasswordGenerator that automatically creates secure, policy-compliant passwords.
+A Java library for password security, featuring a validator that checks whether a string complies with a strict password policy, a PasswordGenerator that automatically creates secure, policy-compliant passwords and a CLI tool accessible via the Main.main() method.
+
 ## Policy
 
 ### Required Policy
@@ -57,7 +60,7 @@ boolean containsSpecialChar = PasswordValidator.containsSpecialChar(password);
 
 ```java
 string password = "Passw0rd";
-boolean isValid = PasswordValidator.isValid(password);
+ValidationResult result = PasswordValidator.isValid(password);
 ```
 
 ## PasswordGenerator Methods (Bonus)
@@ -83,25 +86,103 @@ string password = PasswordGenerator.generateSecurePassword();
 
 ## Usage
 
+### Package
 ```java
 package com.github.simonsagstetter;
 
+import java.util.ArrayList;
+
 public class Main {
+    
     public static void main(String[] args) {
         String password = "SecurePa55word!";
-        boolean isValid = PasswordValidator.isValid(password);
+        
+        ValidationResult result = PasswordValidator.isValid(password);
+        
+        boolean isValid = result.getIsValid();
+        ArrayList<String> reasons = result.getReasons();
 
-        if(isValid){
-            // do this
-        }else {
-            // do that
+        if (result.getIsValid()) {
+            // process
+        } else {
+            for (String reason : result.getReasons()) {
+                System.out.println(reason);
+            }
+        }
+
+        // or check for reasons
+        if (result.hasReason()) {
+            for (String reason : result.getReasons()) {
+                System.out.println(reason);
+            }
         }
 
         // or use a generated secure password - no validation necessary
         String generatedPassword = PasswordGenerator.generateSecurePassword();
     }
 }
+```
+### CLI
+*Comile and execute com.github.simonsagstetter.Main class*
+```shell
+    # enter a password and hit enter
+    Please enter your new password: <yourpassword>
+    
+    # Check for errors
+    The entered password is invalid!
+    Reasons:
+    - <yourpassword> was identified as an unsecure password
+    - <yourpassword> does not meet the required minimum length of 8
+    - <yourpassword> does not contain a digit
+    - <yourpassword> does not contain upper and lower case characters
+    - <yourpassword> does not contain a special char from the allowed set (!@#$%^&*()-_+=?.,;:)d
+    
+    # type in y or Y to try again or hit any key to exit
+    Do you want to try again? (y/n) <your-choice>
+    
+    OK! Goodbye...
+```
 
+#### Example
+
+```shell
+    Please enter your new password: 12345678
+    The entered password is invalid!
+    Reasons:
+    - 12345678 was identified as an unsecure password
+    
+    Do you want to try again? (y/n) y
+    
+    Please enter your new password: 123456789password
+    The entered password is invalid!
+    Reasons:
+    - 123456789password does not contain upper and lower case characters
+    - 123456789password does not contain a special char from the allowed set (!@#$%^&*()-_+=?.,;:)
+    
+    Do you want to try again? (y/n) y
+    
+    Please enter your new password: SafePassword
+    The entered password is invalid!
+    Reasons:
+    - SafePassword does not contain a digit
+    - SafePassword does not contain a special char from the allowed set (!@#$%^&*()-_+=?.,;:)
+    
+    Do you want to try again? (y/n) y
+    
+    Please enter your new password: password!
+    The entered password is invalid!
+    Reasons:
+    - password! does not contain a digit
+    - password! does not contain upper and lower case characters
+    
+    Do you want to try again? (y/n) y
+    
+    Please enter your new password: S3curePassw000rd!
+    The entered password is valid!
+    
+    Do you want to validate a new password? (y/n) n
+    
+    OK! Goodbye...
 ```
 
 ## Additional Information
@@ -115,3 +196,9 @@ This project includes the following bonus packages:
   - generates a secure and strong password that already fulfills the requirements set by basic + bonus password policy
 - ParameterizedTest
   - values which were added to the invalid.csv or valid.csv inside `src/test/resources` will be included in the PasswordValidatorTest class 
+- ValidationResult
+  - PasswordValidator.isValid() returns a ValidationResult class instance that contains the result of the validation
+  - `ValidationResult.getIsValid()` returns a `boolean` 
+  - `ValidationResult.getReasons()` returns a `ArrayList<String>` which contain reasons why the validation failed
+  - Check for reasons by calling `ValidationResult.hasReason()`
+- CLI Tool - check out the [Usage](#CLI) section for more information

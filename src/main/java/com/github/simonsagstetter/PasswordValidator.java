@@ -3,11 +3,13 @@ package com.github.simonsagstetter;
 import java.util.Set;
 import java.util.Locale;
 
-public final class PasswordValidator {
+public final class PasswordValidator{
 
     public static final int minLengthDefault = 8;
     public static final Set<String> commonPasswords = Set.of("12345678", "password", "qwertzui", "asdfghjk", "abcdefgh", "00000000");
     public static final String allowedSpecialChars = "!@#$%^&*()-_+=?.,;:";
+
+    private PasswordValidator(){}
 
     public static boolean hasMinLength(String password){
         return password != null && password.trim().length() >= minLengthDefault;
@@ -50,15 +52,31 @@ public final class PasswordValidator {
         return false;
     }
 
-    public static boolean isValid(String password){
-        if(isCommonPassword(password))return false;
-        if(!hasMinLength(password))return false;
+    public static ValidationResult isValid(String password){
+        ValidationResult result = new ValidationResult();
+        if(password == null)return result;
 
-        int fulfilledPolicyCount = 0;
+        if(isCommonPassword(password)) return result.addReason(Messages.IS_COMMON_PASSWORD(password), true);
+        if(!hasMinLength(password))return result.addReason(Messages.NOT_HAS_MIN_LENGTH(password), true);
 
-        if(containsDigit(password))++fulfilledPolicyCount;
-        if(containsUpperAndLower(password) && ++fulfilledPolicyCount >=2)return true;
+        int policyCount = 0;
+        boolean hasDigit = containsDigit(password);
+        boolean hasUpperLower = containsUpperAndLower(password);
+        boolean hasSpecial = containsSpecialChar(password);
 
-        return containsSpecialChar(password) && ++fulfilledPolicyCount >= 2;
+        if (hasDigit) policyCount++;
+        if (hasUpperLower) policyCount++;
+        if (hasSpecial) policyCount++;
+
+        if (!hasDigit) result.addReason(Messages.NOT_CONTAINS_DIGIT(password));
+        if (!hasUpperLower) result.addReason(Messages.NOT_CONTAINS_UPPER_AND_LOWER(password));
+        if (!hasSpecial) result.addReason(Messages.NOT_CONTAINS_SPECIAL_CHAR(password));
+
+        if (policyCount >= 2) {
+            result.setIsValid(true);
+            result.clearReasons();
+        }
+
+        return result;
     }
 }
